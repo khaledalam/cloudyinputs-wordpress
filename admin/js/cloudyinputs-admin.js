@@ -1,32 +1,47 @@
 (function( $ ) {
 	'use strict';
 
-	/**
-	 * All of the code for your admin-facing JavaScript source
-	 * should reside in this file.
-	 *
-	 * Note: It has been assumed you will write jQuery code here, so the
-	 * $ function reference has been prepared for usage within the scope
-	 * of this function.
-	 *
-	 * This enables you to define handlers, for when the DOM is ready:
-	 *
-	 * $(function() {
-	 *
-	 * });
-	 *
-	 * When the window is loaded:
-	 *
-	 * $( window ).load(function() {
-	 *
-	 * });
-	 *
-	 * ...and/or other possibilities.
-	 *
-	 * Ideally, it is not considered best practise to attach more than a
-	 * single DOM-ready or window-load handler for a particular page.
-	 * Although scripts in the WordPress core, Plugins and Themes may be
-	 * practising this, we should strive to set a better example in our own work.
-	 */
+
+	// Save settings
+	$(document).on('click', '#btn-save-settings', function(e) {
+		e.preventDefault();
+
+		const $cloudyinputs_apikey = $('#cloudyinputs_apikey').val();
+		const $enable = $('#cloudyinputs_enable').is(':checked');
+
+		document.body.style.cursor = "wait";
+		$(this).prop('disabled', true);
+
+		const $adminAjaxUrl = $(this).data('admin-ajax');
+		const $nonce = $(this).data('nonce');
+
+		let $data = {
+			nonce: $nonce,
+			action: 'ajax_handle_save_settings',
+			apikey: $cloudyinputs_apikey,
+			enable: $enable ? 1 : 0,
+		};
+
+		$.ajaxSetup({
+			type: 'POST',
+			timeout: 15000,
+		});
+
+		$.post($adminAjaxUrl, $data)
+			.done(res => {
+				let success = res?.message;
+				document.body.style.cursor = "default";
+				alert(success);
+			})
+			.fail(err => {
+				document.body.style.cursor = "default";
+				let error = err?.responseJSON?.data?.message;
+				alert(error || err?.statusText);
+			})
+			.always(() => {
+				document.body.style.cursor = "default";
+				$(this).prop('disabled', false);
+			});
+	});
 
 })( jQuery );
