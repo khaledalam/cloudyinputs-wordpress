@@ -146,7 +146,7 @@ class Cloudyinputs_Admin {
                             <span>1. Get Your APIKEY from <a href="https://speaktextonline.com/cloudyinputs" target="_blank">Dashboard</a></a> </span>
                             </small><br /><br />
                             <small style="color: #a1a1a1;">
-                            <span>2. Put this IP address <b>{$_SERVER['REMOTE_ADDR']}</b> in the "Allow use your API Key only from" section in <a href="https://speaktextonline.com/cloudyinputs" target="_blank">Dashboard</a></span>
+                            <span>2. Put your domain <b>without</b> (http/https) in the "Allow use your API Key only from" section in <a href="https://speaktextonline.com/cloudyinputs" target="_blank">Dashboard</a></span>
                             </small>
                         </div>
                        
