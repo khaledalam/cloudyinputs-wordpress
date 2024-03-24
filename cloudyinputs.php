@@ -15,11 +15,11 @@
  * @wordpress-plugin
  * Plugin Name:       CloudyInputs
  * Plugin URI:        https://speaktextonline.com/cloudyinputs
- * Description:       Auto words and sentences prediction using AI and Drafting users' inputs instantly on cloud
+ * Description:       Auto words and sentences prediction using AI and Drafting users' inputs instantly on cloud
  * Version:           1.0.0
  * Author:            Khaled Alam
  * Author URI:        https://KhaledAlam.net/
- * License:           GPL-2.0+
+ * License:           GPLv2
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       cloudyinputs
  * Domain Path:       /languages
